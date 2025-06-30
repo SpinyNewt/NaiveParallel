@@ -50,14 +50,14 @@ def parse_config():
                 print(f"检测到 {num_gpus} 个GPU，使用默认配置")
             except Exception:
                 print("无法自动检测GPU。将使用CPU模式运行")
-                gpu_limits["cpu"] = 4  # CPU模式下允许多个任务并行
+                gpu_limits["cpu"] = 0  # CPU模式下允许多个任务并行
     
     except Exception as e:
         print(f"解析配置文件时出错: {e}")
     
     if not gpu_limits:
         print("无可用GPU配置，将使用CPU模式")
-        gpu_limits["cpu"] = 4
+        gpu_limits["cpu"] = 0
     
     return gpu_limits
 
